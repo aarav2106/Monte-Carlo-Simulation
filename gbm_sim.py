@@ -34,11 +34,11 @@ dlog = np.log(prices_hist / prices_hist.shift(1)).dropna() #log of the daily ret
 mu_daily = float(dlog.mean())             
 sigma_daily = float(dlog.std(ddof=1))     
 
-print("=============================================")
+print(".................................................")
 print(f"Estimated from {len(dlog)} daily obs")
 print(f"Dailuy mu  ≈ {mu_daily:.4f}")
 print(f"Daily vol ≈ {sigma_daily:.4f}")
-print("=============================================")
+print(".................................................")
 
 all_paths = []    # list of lists, each inner list is one price path (length 253 incl. day 0)
 final_prices = [] # list of terminal prices (day 252)
@@ -63,19 +63,19 @@ median_final = np.median(final_prices_arr)
 expected_return = ((expected_final-S0)/S0)
 p10, p25, p75, p90 = np.percentile(final_prices_arr, [10, 25, 75, 90])
 
-print("=============================================")
+print(".................................................")
 print("One-year Monte Carlo summary")
 print(f"Start price (S0)      : {S0:,.2f}")
 print(f"Expected final price  : {expected_final:,.2f}")
 print(f"Expected returns  : {expected_return:.2%}")
-print("=============================================")
+print(".................................................")
 
-print("=============================================")
+print(".................................................")
 print("5 Number Summary")
 print(f"Median final price    : {median_final:,.2f}")
 print(f"10th / 25th pct       : {p10:,.2f} / {p25:,.2f}")
 print(f"75th / 90th pct       : {p75:,.2f} / {p90:,.2f}")
-print("=============================================")
+print(".................................................")
 
 
 plt.figure(figsize=(10, 6))
